@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+	    <!-- 数据库配置 -->
+	    <property name="connection.username">root</property>
+	    <property name="connection.password">123456</property>
+	    <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+	    <property name="connection.url">jdbc:mysql:///test</property>
+	    <!-- 本地方言 -->
+	    <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+	    <!-- 显示sql -->
+	    <property name="show_sql">true</property>
+	    <!-- 格式化sql -->
+	    <property name="format_sql">true</property>
+	    <!-- 自动生成表 -->
+	    <property name="hbm2ddl.auto">update</property>
+	    <!--  设置 Hibernate 的事务隔离级别 -->
+	    <property name="connection.isolation">2</property>
+	    <!-- 配置实体和.hbm.xml的关系映射 -->
+	    <mapping resource="com/lmg/enties/New.hbm.xml"/>
+    </session-factory>
+</hibernate-configuration>
