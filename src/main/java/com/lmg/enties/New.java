@@ -7,6 +7,8 @@ public class New {
 	private String title;
 	private String author;
 	private Date date;
+	//派生属性
+	private String desc;
 	
 	
 	public int getId() {
@@ -45,10 +47,19 @@ public class New {
 		super();
 	}
 	
+	
 	@Override
 	public String toString() {
-		return "New [id=" + id + ", title=" + title + ", author=" + author + ", date=" + date + "]";
+		return "New [id=" + id + ", title=" + title + ", author=" + author + ", date=" + date + ", desc=" + desc + "]";
 	}
+	
+	public String getDesc() {
+		return desc;
+	}
+	public void setDesc(String desc) {
+		this.desc = desc;
+	}
+
 	
 	
 }

@@ -3,19 +3,21 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 2018-10-11 13:54:58 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
-    <class name="com.lmg.enties.New" table="NEW">
-        <id name="id" type="int">
+    <class name="com.lmg.enties.New" table="NEW" dynamic-update="true">
+        <id name="id" type="int" >
             <column name="ID" />
             <generator class="native" />
         </id>
-        <property name="title" type="java.lang.String">
-            <column name="TITLE" />
+        <property name="title" type="string" column="TITLE" unique="true" update="false" index="new_index" length="20">
         </property>
-        <property name="author" type="java.lang.String">
+        <property name="author" type="java.lang.String" index="new_index">
             <column name="AUTHOR" />
         </property>
         <property name="date" type="java.sql.Date">
             <column name="DATE" />
         </property>
+        
+        <!-- 映射派生属性 -->
+        <property name="desc" formula="(SELECT concat(author, ': ',title) FROM NEW n WHERE n.id = id)"></property>
     </class>
 </hibernate-mapping>
