@@ -1,9 +1,15 @@
-package com.lmg.hibernate_2;
+package com.lmg.enties;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Date;
 
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -16,6 +22,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.lmg.enties.New;
+import com.lmg.enties.Pay;
+import com.lmg.enties.Worker;
 
 public class test {
 	private SessionFactory sessionFactory;
@@ -41,11 +49,50 @@ public class test {
 	}
 	
 	@Test
+	public void testComponent(){	
+		Worker worker = new Worker();
+		Pay pay = new Pay();
+		
+		pay.setMouthlyPay(10000);
+		pay.setYearPay(80000);
+		pay.setVocationWithPay(5);
+		worker.setName("AAA");
+		worker.setPay(pay);
+		session.save(worker);
+	}
+	
+	@Test
+	public void testBlob() throws InterruptedException, IOException, SQLException{	
+//		New new1 = new New();
+//		new1.setTitle("cc");
+//		new1.setAuthor("cc");
+//		new1.setContent("CONTENT");
+//		new1.setDate(new Date());
+//		new1.setDesc("DESC");
+//		
+//		InputStream stream = new FileInputStream("image.jpg");
+//		Blob image = Hibernate.getLobCreator(session).createBlob(stream, stream.available());
+//		
+//		new1.setImage(image);
+//		
+//		session.save(new1);
+		
+		
+		New new1 = (New) session.get(New.class, 1);
+		Blob image = new1.getImage();
+		
+		InputStream in = image.getBinaryStream();
+		System.out.println(in.available());
+	}
+	
+	@Test
 	public void testPropertyUpdate() throws InterruptedException{	
-		New new1 = (New) session.get(New.class, 6);
+		New new1 = (New) session.get(New.class, 1);
 		new1.setTitle("BBBB");
 		
+		
 		System.out.println(new1);
+		System.out.println(new1.getDate().getClass());
 	}
 	
 	@Test

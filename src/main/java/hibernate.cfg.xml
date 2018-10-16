@@ -37,6 +37,13 @@
 	    <property name="jdbc.batch_size">30</property>
 	    
 	    <!-- 配置实体和.hbm.xml的关系映射 -->
-	    <mapping resource="com/lmg/enties/New.hbm.xml"/>
+	   <!--  <mapping resource="com/lmg/enties/New.hbm.xml"/>
+	    <mapping resource="com/lmg/enties/Worker.hbm.xml"/>
+	    
+	    <mapping resource="com/lmg/enties/n21/Customer.hbm.xml"/>
+	    <mapping resource="com/lmg/enties/n21/Order.hbm.xml"/> -->
+	    
+	    <mapping resource="com/lmg/enties/n21/both/Customer.hbm.xml"/>
+	    <mapping resource="com/lmg/enties/n21/both/Order.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>
